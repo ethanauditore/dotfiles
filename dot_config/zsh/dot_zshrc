@@ -1,0 +1,82 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignore-parents parent pwd
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
+zstyle ':completion:*' max-errors 0 not-numeric
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' original true
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' use-compctl true
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/ethan/.zshrc'
+
+fpath+=~/.config/zsh/zfunc
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.local/share/zsh/history
+HISTSIZE=100000
+SAVEHIST=100000
+ENABLE_CORRECTION="true"
+setopt autocd extendedglob
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+# Dracula colorshcheme
+if [ "$TERM" = "linux" ]; then
+	printf %b '\e[40m' '\e[8]' # set default background to color 0 'dracula-bg'
+	printf %b '\e[37m' '\e[8]' # set default foreground to color 7 'dracula-fg'
+	printf %b '\e]P0282a36'    # redefine 'black'          as 'dracula-bg'
+	printf %b '\e]P86272a4'    # redefine 'bright-black'   as 'dracula-comment'
+	printf %b '\e]P1ff5555'    # redefine 'red'            as 'dracula-red'
+	printf %b '\e]P9ff7777'    # redefine 'bright-red'     as '#ff7777'
+	printf %b '\e]P250fa7b'    # redefine 'green'          as 'dracula-green'
+	printf %b '\e]PA70fa9b'    # redefine 'bright-green'   as '#70fa9b'
+	printf %b '\e]P3f1fa8c'    # redefine 'brown'          as 'dracula-yellow'
+	printf %b '\e]PBffb86c'    # redefine 'bright-brown'   as 'dracula-orange'
+	printf %b '\e]P4bd93f9'    # redefine 'blue'           as 'dracula-purple'
+	printf %b '\e]PCcfa9ff'    # redefine 'bright-blue'    as '#cfa9ff'
+	printf %b '\e]P5ff79c6'    # redefine 'magenta'        as 'dracula-pink'
+	printf %b '\e]PDff88e8'    # redefine 'bright-magenta' as '#ff88e8'
+	printf %b '\e]P68be9fd'    # redefine 'cyan'           as 'dracula-cyan'
+	printf %b '\e]PE97e2ff'    # redefine 'bright-cyan'    as '#97e2ff'
+	printf %b '\e]P7f8f8f2'    # redefine 'white'          as 'dracula-fg'
+	printf %b '\e]PFffffff'    # redefine 'bright-white'   as '#ffffff'
+	clear
+fi
+
+source "${XDG_CONFIG_HOME:-$HOME/.config}/nnn/config.zsh"
+source "${ZDOTDIR:-$HOME/.config/zsh}/alias.zsh"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+eval "$(zoxide init zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
