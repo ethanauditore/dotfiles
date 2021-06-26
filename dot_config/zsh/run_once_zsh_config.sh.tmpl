@@ -1,5 +1,14 @@
 #!/usr/bin/env sh
 
-if [[ ! -L "$HOME/.zshenv" ]]; then
-    ln -s "$HOME/.config/zsh/.zshenv" "$HOME/.zshenv"
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+
+if [[ ! -f "$HOME/.zshenv" ]]; then
+    sudo pacman -S zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel10k
+    git clone https://aur.archlinux.org/yay.git && cd yay
+    makepkg -si && cd && rm -rf yay
+    yay -S zoxide-bin
 fi
+
+{{ end -}}
+
+mv "$HOME/.config/zsh/.zshenv" "$HOME/.zshenv"
