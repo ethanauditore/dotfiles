@@ -12,5 +12,7 @@ fi
 {{ end -}}
 
 mv "$HOME/.config/zsh/.zshenv" "$HOME/.zshenv"
-mkdir $HOME/.local/share/zsh
-touch $HOME/.local/share/zsh/history
+if [[ ! -d "$HOME/.local/share/zsh" ]]; then
+    mkdir $HOME/.local/share/zsh
+    touch $HOME/.local/share/zsh/history
+fi
