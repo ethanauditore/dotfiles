@@ -2,12 +2,12 @@
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 
-if [[ ! -f "$HOME/.zshenv" ]]; then
-    sudo pacman -S zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel10k
-    git clone https://aur.archlinux.org/yay.git && cd yay
-    makepkg -si && cd && rm -rf yay
-    yay -S zoxide-bin
-fi
+    if [[ ! -f "$HOME/.zshenv" ]]; then
+        sudo pacman -S zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel10k
+        git clone https://aur.archlinux.org/yay.git && cd yay
+        makepkg -si && cd && rm -rf yay
+        yay -S zoxide-bin
+    fi
 
 {{ end -}}
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
-if ! pacman -Qi awesome > /dev/null ; then
-    sudo pacman -S awesome light playerctl alsa-utils
-    usermod -aG video $USER
-fi
+    if ! pacman -Qi awesome > /dev/null ; then
+        sudo pacman -S awesome light playerctl alsa-utils
+        usermod -aG video $USER
+    fi
 {{ end -}}
