@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
+    echo "Installing emacs and dependencies for Doom:"
     if ! pacman -Qi emacs > /dev/null ; then
         sudo pacman -S emacs ripgrep fd
     fi
@@ -8,5 +9,6 @@ fi
 
 {{ end -}}
 
+echo "Installing doom emacs:"
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/doom-emacs
 ~/.config/doom-emacs/bin/doom install

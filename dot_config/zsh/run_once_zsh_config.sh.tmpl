@@ -3,9 +3,12 @@
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 
     if [[ ! -f "$HOME/.zshenv" ]]; then
+        echo "Installing Zsh plugins:"
         sudo pacman -S zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel10k
+        echo "Installing yay:"
         git clone https://aur.archlinux.org/yay.git && cd yay
         makepkg -si && cd && rm -rf yay
+        echo "Installing zoxide:"
         yay -S zoxide-bin
     fi
 

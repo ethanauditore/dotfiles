@@ -2,6 +2,7 @@
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
     if ! pacman -Qi awesome > /dev/null ; then
+        echo "Installing awesome and sound and brightness tools:"
         sudo pacman -S awesome light playerctl alsa-utils
         usermod -aG video $USER
     fi
