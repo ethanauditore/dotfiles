@@ -2,7 +2,7 @@
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
     if ! pacman -Qi emacs > /dev/null ; then
-        sudo pacman -S emacs
+        sudo pacman -S emacs ripgrep fd
     fi
 fi
 
