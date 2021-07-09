@@ -4,6 +4,8 @@
     if ! pacman -Qi awesome > /dev/null ; then
         echo "Installing awesome and sound and brightness tools:"
         sudo pacman -S awesome light playerctl alsa-utils
-        usermod -aG video $USER
+        sudo usermod -aG video $USER
+        sudo localectl set-x11-keymap latam
+        echo "exec awesome" > ~/.xinitrc
     fi
 {{ end -}}
