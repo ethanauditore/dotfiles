@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
-    if ! pacman -Qi tmux > /dev/null ; then
+    if ! pacman -Qs tmux > /dev/null ; then
         echo "Installing tmux:"
         sudo pacman -S tmux
     fi

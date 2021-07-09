@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
-    if ! pacman -Qi emacs > /dev/null ; then
+    if ! pacman -Qs emacs > /dev/null ; then
         echo "Installing emacs and dependencies for Doom:"
         sudo pacman -S emacs ripgrep fd
     fi
