@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
     if ! pacman -Qs awesome > /dev/null ; then
