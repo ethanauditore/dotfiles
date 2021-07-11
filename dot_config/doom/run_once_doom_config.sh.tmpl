@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+if ! which doom > /dev/null ; then
+    echo "Installing Doom Emacs:"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/doom-emacs
+    ~/.config/doom-emacs/bin/doom install
+else
+    ~/.config/doom-emacs/bin/doom sync
+fi
