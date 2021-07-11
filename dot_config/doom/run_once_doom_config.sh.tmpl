@@ -5,5 +5,9 @@ if ! which doom > /dev/null ; then
     git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/doom-emacs
     ~/.config/doom-emacs/bin/doom install
 else
-    ~/.config/doom-emacs/bin/doom sync
+    read -p "Run Doom sync? [Y/n] " answer
+    answer=${answer,,}
+    if [ ${answer} == "y" ]; then
+        ~/.config/doom-emacs/bin/doom sync
+    fi
 fi
