@@ -4,11 +4,7 @@
     if ! pacman -Qs emacs > /dev/null ; then
         echo "Installing emacs and dependencies for Doom:"
         sudo pacman -S emacs ripgrep fd
+        echo "Installing Chemacs2:"
+        git clone https://github.com/plexus/chemacs2.git ~/.config/emacs
     fi
 {{ end -}}
-
-echo "Installing Chemacs2:"
-git clone https://github.com/plexus/chemacs2.git ~/.config/emacs
-echo "Installing Doom Emacs:"
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/doom-emacs
-~/.config/doom-emacs/bin/doom install
