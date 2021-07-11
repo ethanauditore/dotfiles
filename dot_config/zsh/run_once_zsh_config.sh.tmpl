@@ -5,11 +5,11 @@
     if [[ ! -f "$HOME/.zshenv" ]]; then
         echo "Installing Zsh plugins:"
         sudo pacman -S zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel10k
-        if ! yay -Qs yay > /dev/null ; then
-            echo "Installing yay:"
-            git clone https://aur.archlinux.org/yay.git && cd yay
-            makepkg -si && cd && rm -rf yay
-        fi
+        echo "Installing yay:"
+        git clone https://aur.archlinux.org/yay.git && cd yay
+        makepkg -si && cd && rm -rf yay
+        echo "Installing Rust:"
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
         echo "Installing zoxide:"
         yay -S zoxide-bin
     fi
